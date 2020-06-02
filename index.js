@@ -4,8 +4,9 @@ const app = express();
 app.use(express.json());
 const port = process.env.PORT || 8000;
 
-const createUser = require("./controlers/createUser");
-app.post("/users", createUser);
+const userAuth = require("./controlers/userAuth");
+app.post("/signup", userAuth.signup);
+app.post("/login", userAuth.login);
 
 //handling errors
 app.use((err, req, res, next) => {
